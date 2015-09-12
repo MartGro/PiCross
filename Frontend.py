@@ -15,6 +15,7 @@ import GameConfiguration
 
 rows =GameConfiguration.rows
 columns=GameConfiguration.columns
+print "no.Rows:%s, no.Columns:%s " % (rows.__len__(),columns.__len__())
 side_len=GameConfiguration.side_len
 row_possibilities = []
 for elem in rows:
@@ -30,5 +31,8 @@ row_concurr=map(PicrossAlgorithms.FindConcurrence,row_possibilities)
 
 print row_possibilities
 print column_possibilities
-print column_concurr
-print row_concurr
+for col in column_concurr:
+    print col
+print "\n\n"
+for row in row_concurr:
+    print row

@@ -1,4 +1,5 @@
 import itertools
+import string
 from bitarray import bitarray
 
 __author__ = 'martin'
@@ -84,6 +85,7 @@ def FindConcurrence(inp_arrangements):
         ret = []
         for el in val:
             ret.append(el)
+        ret = map(To01,ret)
         return ret
     elif len(inp_arrangements)<=0:
         raise TypeError
@@ -119,6 +121,10 @@ def CompareTernaryValues(x,y):
         return 0
     else:
         return "u"
-
+def To01(x):
+    if x=="1":
+        return 1
+    if x=="0":
+        return 0
 #print FindConcurrence(PossibleArrangements((2,7,2),14))
 #print ImprovedOffsetMap(3,3)
