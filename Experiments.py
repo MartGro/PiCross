@@ -37,5 +37,3 @@ def BaseConversion(number,base,len):
             stor.append(0)
         stor.reverse()
         return stor
-
-
