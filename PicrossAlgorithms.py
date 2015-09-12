@@ -8,7 +8,7 @@ import bitarray
 def PossibleArrangements(inputtuple, length):
     #returns a list of bitarrays representing possible arrangements for a certain tuple and length
     #PossibleArrangements((2,1,2),8) = [bitarray('11010110'), bitarray('11010011'), bitarray('11001011'), bitarray('01101011')]
-
+    #print "PA called with inputtuple %s and length %s" % (inputtuple,length)
     arrangements = []
     tuplelen=len(inputtuple)
 
@@ -121,4 +121,4 @@ def CompareTernaryValues(x,y):
         return "u"
 
 #print FindConcurrence(PossibleArrangements((2,7,2),14))
-print ImprovedOffsetMap(3,3)
+#print ImprovedOffsetMap(3,3)
