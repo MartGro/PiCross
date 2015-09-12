@@ -1,4 +1,3 @@
-from PicrossAlgorithms import FindConcurrence
 
 __author__ = 'martin'
 import PicrossAlgorithms as PA

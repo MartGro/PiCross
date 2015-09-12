@@ -56,6 +56,11 @@ def DetermineOffsetTable(lenstorage,positionstorage,length):
 #print PossibleArrangements((2,1,2),8)
 
 def ImprovedOffsetMap(maxval,length):
+    #returns a list of possible offsets given a maximum offset (maxval)
+    #and the number of elements in the table(length)
+    #ImprovedOffsetMap(3,3)=[[0, 0, 0], [0, 0, 1], [0, 0, 2], [0, 1, 1], [0, 1, 2], [0, 2, 2], [1, 1, 1], [1, 1, 2], [1, 2, 2], [2, 2, 2]]
+
+
     #print "IOM called w/ %s; %s" % (maxval,length)
     val = []
     s = ""
@@ -71,7 +76,8 @@ def ImprovedOffsetMap(maxval,length):
 
 def FindConcurrence(inp_arrangements):
     #input: List of bitarrays
-    #finds concurrent values in all bitarrays and returns a string with 1 for "is true", 0 for "is wrong" and "u" for "undefined"
+    #finds concurrent values in all bitarrays and returns a string with 1 for "is true",
+    # 0 for "is wrong" and "u" for "undefined"
     if len(inp_arrangements)==1:
         val = inp_arrangements[0]
         val = bitarray.bitarray.to01(val)
@@ -106,7 +112,7 @@ def CompareListElementwise(l1,l2):
 
 
 def CompareTernaryValues(x,y):
-    #returns 1 if both input values are 1, 0 if both are 0, "u" both is not the case
+    #returns 1 if both input values are 1, 0 if both are 0, "u" if both is not the case
     if x==1 and y==1:
         return 1
     if x==0 and y==0:
@@ -114,4 +120,5 @@ def CompareTernaryValues(x,y):
     else:
         return "u"
 
-print FindConcurrence(PossibleArrangements((2,7,2),14))
+#print FindConcurrence(PossibleArrangements((2,7,2),14))
+print ImprovedOffsetMap(3,3)
