@@ -2,6 +2,8 @@ __author__ = 'martin'
 import ConfigParser
 import PicrossAlgorithms
 import GameConfiguration
+import time
+t=time.time()
 #import sys,os
 #sys.path.append(os.path.realpath('..'))
 #print sys.path
@@ -29,8 +31,44 @@ column_concurr=map(PicrossAlgorithms.FindConcurrence,column_possibilities)
 row_concurr=map(PicrossAlgorithms.FindConcurrence,row_possibilities)
 
 
-print row_possibilities
-print column_possibilities
+
+
+
+#print row_possibilities
+#print column_possibilities
+#for col in column_concurr:
+#    print col
+#print "\n\n"
+#for row in row_concurr:
+#    print row
+#
+#print "\n\n"
+#print column_possibilities
+#print PicrossAlgorithms.ImprovedReducePossibilities(column_possibilities,row_concurr[4],4)
+
+while(PicrossAlgorithms.CheckFinished(row_possibilities)==False or PicrossAlgorithms.CheckFinished(column_possibilities)==False):
+             for i in range(row_concurr.__len__()):
+                 column_possibilities=PicrossAlgorithms.ImprovedReducePossibilities(column_possibilities,row_concurr[i],i)
+
+             for i in range(column_concurr.__len__()):
+                 row_possibilities=PicrossAlgorithms.ImprovedReducePossibilities(row_possibilities,column_concurr[i],i)
+
+             #print "p1"
+             #print column_possibilities
+             #print row_possibilities
+             #print "p2"
+             #print column_concurr
+             #print row_concurr
+
+             column_concurr=PicrossAlgorithms.CheckSet(column_possibilities,column_concurr)
+             row_concurr=PicrossAlgorithms.CheckSet(row_possibilities,row_concurr)
+             #print "while finished"
+             #print column_concurr
+             #print row_concurr
+             #raw_input()
+
+print "Execution time: %s" %(time.time()-t)
+
 for col in column_concurr:
     print col
 print "\n\n"
