@@ -1,3 +1,6 @@
+View this readme in an editor with a interface large enough to not mess up the layout; it looks horrible online
+
+
 # PiCross
 This is a command-line solver for PiCross puzzles. Random puzzles can be obtained from picross.net.
 It is operated by changing the GameConfiguration.py file, the GameConfiguration.txt file is currently useless.
