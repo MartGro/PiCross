@@ -10,10 +10,13 @@ Set the variables in the GameConfiguration file according to the PiCross you wan
 
 e.g.:
 side_len=6                                       
-rows=[(5,),(6,),(1,2),(1,2,1),(1,2),(2,1)]       
+rows=[(5,),(6,),(1,2),(1,2,1),(1,2),(2,1)]        
 columns=[(1,1,1),(3,2),(2,1),(2,1,1),(3,1),(5,)] 
 
 be sure to comment other definitions out by writing a "#" in front of them
+
+IMPORTANT: If there is a single block in a row, the input MUST look like this: (5,) and not (5)!
+The latter option would be a int instead of a touple, and be therefore not iterable --> it throws an exception
 
 NOTE:
 Only quadratic puzzles are supported, although the algorithm could solve others, too.
