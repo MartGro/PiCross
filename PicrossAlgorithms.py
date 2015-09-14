@@ -1,4 +1,5 @@
 import itertools
+import string
 from bitarray import bitarray
 
 __author__ = 'martin'
@@ -8,7 +9,7 @@ import bitarray
 def PossibleArrangements(inputtuple, length):
     #returns a list of bitarrays representing possible arrangements for a certain tuple and length
     #PossibleArrangements((2,1,2),8) = [bitarray('11010110'), bitarray('11010011'), bitarray('11001011'), bitarray('01101011')]
-
+    #print "PA called with inputtuple %s and length %s" % (inputtuple,length)
     arrangements = []
     tuplelen=len(inputtuple)
 
@@ -84,10 +85,12 @@ def FindConcurrence(inp_arrangements):
         ret = []
         for el in val:
             ret.append(el)
+        ret = map(To01,ret)
         return ret
     elif len(inp_arrangements)<=0:
+        print "FindConcurrence called w/ invalid statement: %s" % inp_arrangements
         raise TypeError
-        return None
+        return inp_arrangements
 
     val=[]
     for element in inp_arrangements:
@@ -120,5 +123,78 @@ def CompareTernaryValues(x,y):
     else:
         return "u"
 
+def To01(x):
+    if x=="1":
+        return 1
+    if x=="0":
+        return 0
+
+def ReducePossibilities(possibilities,val_to_compare,postion):
+    for c in val_to_compare:
+        possib_n =[]
+        for p in possibilities:
+            lines_n =[]
+            for el in p:
+                if CheckFit(el[postion],c):
+                    lines_n.append(el)
+            possib_n.append(lines_n)
+    return possib_n
+
+def ImprovedReducePossibilities(possibilities,val_to_compare,position):
+    ret = []
+    for p in range(len(possibilities)):
+        l=[]
+        for el in possibilities[p]:
+            if CheckFit(el[position],val_to_compare[p]):
+                l.append(el)
+        ret.append(l)
+    #print "IRP called for %s,%s,%s -> %s \n" % (possibilities,val_to_compare,position,ret)
+    return ret
+
+def CheckFit(x,y):
+    if x==y:
+        return True
+    if y=="u":
+        return True
+    else:
+        return False
+
+def ReduceListElementwise(l1,l2):
+    if len(l1)!=len(l2):
+        raise TypeError
+        return None
+    else:
+        val=[]
+        i = itertools.imap(CompareTernaryValues,l1,l2)
+        for x in i:
+            val.append(x)
+        return val
+
+def CheckFinished(inp):
+    flag = True
+    for el in inp:
+        if len(el)>1:
+            flag=False
+    return flag
+
+def CheckSet(Possibilities,Concurr):
+    #print "Starting value :%s \n" % Concurr
+    for i in range(len(Possibilities)):
+        if len(Possibilities[i])==1:
+            c=bitarray.bitarray.to01(Possibilities[i][0])
+            ret = []
+            for char in c:
+                l=To01(char)
+                ret.append(l)
+            Concurr[i]=ret
+    #print "End value :%s \n" % Concurr
+    #print "CheckSet Called for %s,%s ---> " % (Possibilities,Concurr)
+    return Concurr
+
+
+
+
+
+
 #print FindConcurrence(PossibleArrangements((2,7,2),14))
-print ImprovedOffsetMap(3,3)
+#print ImprovedOffsetMap(3,3)

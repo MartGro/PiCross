@@ -1,0 +1,9 @@
+Configuration Textfile yet to be implemented!
+[GameDefinition]
+side_len=6
+
+[Rows]
+rows=[(1,1,1),(2,2),(1,2),(3,1),(1,2),(1,2)]
+
+[Columns]
+columns=(4,1);(1,2);(1,2,1);(2,2);(1)
