@@ -46,9 +46,12 @@ row_concurr=map(PicrossAlgorithms.FindConcurrence,row_possibilities)
 #print column_possibilities
 #print PicrossAlgorithms.ImprovedReducePossibilities(column_possibilities,row_concurr[4],4)
 
+ct=0
 while(PicrossAlgorithms.CheckFinished(row_possibilities)==False or PicrossAlgorithms.CheckFinished(column_possibilities)==False):
+
              for i in range(row_concurr.__len__()):
                  column_possibilities=PicrossAlgorithms.ImprovedReducePossibilities(column_possibilities,row_concurr[i],i)
+                 #print len(row_possibilities[i])
 
              for i in range(column_concurr.__len__()):
                  row_possibilities=PicrossAlgorithms.ImprovedReducePossibilities(row_possibilities,column_concurr[i],i)
@@ -59,14 +62,29 @@ while(PicrossAlgorithms.CheckFinished(row_possibilities)==False or PicrossAlgori
              #print "p2"
              #print column_concurr
              #print row_concurr
-
+             #print time.time()
+             #print ct
+             ct+=1
+             #print ct
              column_concurr=PicrossAlgorithms.CheckSet(column_possibilities,column_concurr)
              row_concurr=PicrossAlgorithms.CheckSet(row_possibilities,row_concurr)
              #print "while finished"
-             #print column_concurr
-             #print row_concurr
+             column_concurr=map(PicrossAlgorithms.FindConcurrence,column_possibilities)
+             row_concurr=map(PicrossAlgorithms.FindConcurrence,row_possibilities)
+
+             #for elem in row_possibilities:
+             #   print elem
+
+             #print "\n\n"
+
+             #for elem in column_possibilities:
+             #    print elem
              #raw_input()
 
+
+
+
+print ct
 print "Execution time: %s" %(time.time()-t)
 
 for col in column_concurr:
@@ -74,3 +92,6 @@ for col in column_concurr:
 print "\n\n"
 for row in row_concurr:
     print row
+
+def printx(x):
+    print x

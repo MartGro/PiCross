@@ -88,8 +88,9 @@ def FindConcurrence(inp_arrangements):
         ret = map(To01,ret)
         return ret
     elif len(inp_arrangements)<=0:
+        print "FindConcurrence called w/ invalid statement: %s" % inp_arrangements
         raise TypeError
-        return None
+        return inp_arrangements
 
     val=[]
     for element in inp_arrangements:
@@ -140,8 +141,6 @@ def ReducePossibilities(possibilities,val_to_compare,postion):
     return possib_n
 
 def ImprovedReducePossibilities(possibilities,val_to_compare,position):
-
-
     ret = []
     for p in range(len(possibilities)):
         l=[]
