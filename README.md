@@ -1,7 +1,7 @@
 View this readme in an editor with a interface large enough to not mess up the layout; it looks horrible online...
 This solver needs the bitarray package to be installed.
 With pip (Pip Installs Python) installed:
-pip install bitarray 
+sudo pip install bitarray 
 
 
 # PiCross
